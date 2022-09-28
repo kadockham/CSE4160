@@ -9,7 +9,6 @@ sdisk.o: sdisk.cpp
 
 block.o: block.cpp
 	g++ -c block.cpp
-	
 
 clean:
 	rm *.o Project4610
