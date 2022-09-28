@@ -11,8 +11,7 @@
 
 using namespace std;
 
-class Sdisk
-{
+class Sdisk {
 	public:
 		Sdisk(string diskname, int numberofblocks, int blocksize);
 		int getblock(int blocknumber, string &buffer);
