@@ -1,7 +1,7 @@
 /*
- *  Name:           Kenneth Dockham
- *  Filename:       filesys.h
- *  Description:    This file is the headerfile for the class Filesys
+ *  Name:        Kenneth Dockham
+ *  Filename:    filesys.h
+ *  Description: This file is the headerfile for the class Filesys
  */
 
 #ifndef FILESYS_H

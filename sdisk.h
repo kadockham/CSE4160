@@ -1,5 +1,5 @@
 /*
- * Name:	Kenneth Dockham
+ * Name:		Kenneth Dockham
  * Filename:	sdisk.h
  * Description:	This is the header file for the sdisk
  */

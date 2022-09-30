@@ -1,7 +1,7 @@
 /*
- * Name:            Keneth Dockham
- * Filename:        filesys.cpp
- * Description:     This file implements the class described in filesys.h
+ * Name:        Keneth Dockham
+ * Filename:    filesys.cpp
+ * Description: This file implements the class described in filesys.h
  */
 
 #include "filesys.h"

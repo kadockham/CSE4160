@@ -1,5 +1,5 @@
 /*
- * Name:	Kenneth Dockham
+ * Name:		Kenneth Dockham
  * Filename:	sdisk.cpp
  * Description: This file implements the class described in sdisk.h 
  */
