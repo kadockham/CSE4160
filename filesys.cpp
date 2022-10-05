@@ -6,6 +6,7 @@
 
 #include "filesys.h"
 #include "block.h"
+#include <iostream>
 #include <sstream>
 #include <string>
 
@@ -58,6 +59,7 @@ int Filesys::buildfs() {
         fat.push_back(i+1);
     }
     fat[fatsize-1] = 0;
+    return 1;
 }
 int Filesys::readfs() {
 }
@@ -72,12 +74,13 @@ int Filesys::fssynch() {
     }
     string buffer1 = outstream1.str();
     string buffer2 = outstream2.str();
-    //cout << buffer1;
-    //cout << buffer2;
+    cout << buffer1;
+    cout << buffer2;
     vector<string> blocks1 = block(buffer1, getblocksize());
     vector<string> blocks2 = block(buffer2, getblocksize());
     putblock(1, blocks1[0]);
     for(int i = 0; i < blocks2.size(); i++) {
         putblock(i + 2 + fatsize, blocks2[i]);
     }
+    return 1;
 }
