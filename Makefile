@@ -15,5 +15,5 @@ filesys.o: filesys.cpp
 
 clean:
 	rm *.o Project4610
-	rm test
+	rm disk1
 	clear
