@@ -19,11 +19,12 @@ class Filesys: public Sdisk {
         int newfile(string file);
         int rmfile(string file);
         int getfirstblock(string file);
-        int addblock(string file, string block);
+        int addblock(string file, string buffer);
         int delblock(string file, int blocknumber);
         int readblock(string file, int blocknumber, string& buffer);
         int writeblock(string file, int blocknumber, string buffer);
         int nextblock(string file, int blocknumber);
+        vector<string> ls();
     private:
         int rootsize;
         int fatsize;
@@ -33,6 +34,7 @@ class Filesys: public Sdisk {
         int buildfs();
         int readfs();
         int fssynch();
+        bool fbcheck(string file, int blocknumber);
 };
 
 #endif
