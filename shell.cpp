@@ -5,6 +5,7 @@
  */
 
 #include "shell.h"
+#include "block.h"
 #include <iostream>
 
 using namespace std;
@@ -19,10 +20,24 @@ int Shell::dir() {
     }
 }
 int Shell::add(string file, string buffer) {
-
+    int code = newfile(file);
+    if(code == 1) {
+        vector<string> blocks = block(buffer, getblocksize());
+        for(int i = 0; i < blocks.size(); i++) {
+            code = addblock(file, blocks[i]);
+        }
+        return 1;
+    }
+    return 0;
 }
 int Shell::del(string file) {
-
+    int block = getfirstblock(file);
+    while(getfirstblock(file) != 0) {
+        int nblock = nextblock(file, block);
+        delblock(file, block);
+        block = nblock;
+    }
+    return 1;
 }
 int Shell::type(string file) {
 
