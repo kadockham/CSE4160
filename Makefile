@@ -1,5 +1,5 @@
-Project4610: main.o sdisk.o block.o filesys.o
-	g++ -o Project4610 main.o sdisk.o block.o filesys.o
+Project4610: main.o sdisk.o block.o filesys.o shell.o table.o
+	g++ -o Project4610 main.o sdisk.o block.o filesys.o shell.o table.o
 
 main.o: main.cpp
 	g++ -c main.cpp
@@ -12,6 +12,12 @@ block.o: block.cpp
 
 filesys.o: filesys.cpp
 	g++ -c filesys.cpp
+
+shell.o: shell.cpp
+	g++ -c shell.cpp
+
+table.o: table.cpp
+	g++ -c table.cpp
 
 clean:
 	rm *.o Project4610

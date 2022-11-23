@@ -111,7 +111,7 @@ int Filesys::addblock(string file, string buffer) {
     return allocate;
 }
 int Filesys::delblock(string file, int blocknumber) {
-    if(fbcheck(file, blocknumber)) {
+    if(!fbcheck(file, blocknumber)) {
         return 0;
     }
     int b = getfirstblock(file);
@@ -230,7 +230,7 @@ int Filesys::fssynch() {
     vector<string> blocks2 = block(buffer2, getblocksize());
     putblock(1, blocks1[0]);
     for(int i = 0; i < blocks2.size(); i++) {
-        cout << blocks2[i] << endl;
+        //cout << blocks2[i] << endl;
         putblock(i + 2, blocks2[i]);
     }
     return 1;
