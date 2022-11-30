@@ -33,13 +33,12 @@ int Shell::add(string file, string buffer) {
 }
 int Shell::del(string file) {
     int block = getfirstblock(file);
-    cout << block << endl;
     while(block != 0) {
         int nblock = nextblock(file, block);
-        cout << delblock(file, block) << endl;
+        delblock(file, block);
         block = nblock;
     }
-    cout << rmfile(file) << endl;
+    rmfile(file);
     return 1;
 }
 int Shell::type(string file) {
