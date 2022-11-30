@@ -7,17 +7,20 @@
 
 using namespace std;
 
-vector<string> block(string buffer, int b) {
+vector<string> block(string buffer, int b)
+{
     // blocks the buffer into a list of blocks of size b
     vector<string> blocks;
     int numberofblocks = 0;
 
-    if (buffer.length() % b == 0) { 
+    if (buffer.length() % b == 0) 
+    { 
         numberofblocks = buffer.length()/b;
-        }
-    else {
+    }
+    else 
+    {
         numberofblocks = buffer.length()/b +1;
-        }
+    }
 
     string tempblock;
     for (int i = 0; i < numberofblocks; i++) {
@@ -27,9 +30,10 @@ vector<string> block(string buffer, int b) {
 
     int lastblock = blocks.size()-1;
 
-    for (int i = blocks[lastblock].length(); i < b; i++){
+    for (int i = blocks[lastblock].length(); i < b; i++)
+    {
         blocks[lastblock] += "#";
-        }
+    }
 
     return blocks;
 }

@@ -15,47 +15,53 @@ using namespace std;
 
 int main()
 {
-  Shell s1("disk1", 256, 128);
+  Table t1("disk1.txt", 256, 128, "ffile", "ifile");
+  t1.buildTable("data.txt");
+  Shell s1("disk1.txt", 256, 128);
   string s;
   string command="go";
   string op1,op2;
 
   while (command != "quit")
-      {
-        command.clear();
-        op1.clear();
-        op2.clear();
-        cout << "$";
-        getline(cin,s);
-        int firstblank=s.find(' ');
-        if (firstblank < s.length()) s[firstblank]='#';
-        int secondblank=s.find(' ');
-        command=s.substr(0,firstblank);
-        if (firstblank < s.length())
-          op1=s.substr(firstblank+1,secondblank-firstblank-1);
-        if (secondblank < s.length())
-          op2=s.substr(secondblank+1);
-        if (command=="dir")
-          {
-            s1.dir();
-          }
-        if (command=="add")
-          {
-            s1.add(op1, op2);
-          }
-        if (command=="del")
-          {
-            s1.del(op1);
-          }
-        if (command=="type")
-          {
-            s1.type(op1);
-          }
-        if (command=="copy")
-          {
-            s1.copy(op1,op2);
-          }
-      }
+  {
+    command.clear();
+    op1.clear();
+    op2.clear();
+    cout << "$";
+    getline(cin,s);
+    int firstblank=s.find(' ');
+    if (firstblank < s.length()) s[firstblank]='#';
+    int secondblank=s.find(' ');
+    command=s.substr(0,firstblank);
+    if (firstblank < s.length())
+      op1=s.substr(firstblank+1,secondblank-firstblank-1);
+    if (secondblank < s.length())
+      op2=s.substr(secondblank+1);
+    if (command=="dir")
+    {
+      s1.dir();
+    }
+    if (command=="add")
+    {
+      s1.add(op1, op2);
+    }
+    if (command=="del")
+    {
+      s1.del(op1);
+    }
+    if (command=="type")
+    {
+      s1.type(op1);
+    }
+    if (command=="copy")
+    {
+      s1.copy(op1,op2);
+    }
+    if (command=="search") 
+    {
+      t1.search(op1);
+    }
+  }
 
   return 0;
 };

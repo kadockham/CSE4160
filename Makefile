@@ -21,5 +21,5 @@ table.o: table.cpp
 
 clean:
 	rm *.o Project4610
-	rm disk1
+	rm disk1.txt
 	clear

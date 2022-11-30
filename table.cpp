@@ -11,8 +11,10 @@ Table::Table(string diskname, int numberofblocks, int blocksize, string flatfile
     this -> indexfile = indexfile;
 }
 int Table::buildTable(string inputfile) {
-    newfile(indexfile);
-    newfile(flatfile);
+    if(newfile(flatfile) == -1 || newfile(indexfile) == -1) {
+        cout << "Error: Database already exists on disk!" << endl;
+        return 0;
+    };
     ifstream infile;
     infile.open(inputfile.c_str());
     ostringstream outstream;
@@ -25,7 +27,7 @@ int Table::buildTable(string inputfile) {
         outstream << date << " " << b << " ";
         getline(infile, rec);
     }
-    outstream << "88888" << 0 << " ";
+    outstream << "88888" << " " << 0;
     string buffer = outstream.str();
     vector<string> blocks = block(buffer, getblocksize());
     for(int i = 0; i < blocks.size(); i++) {
@@ -34,36 +36,44 @@ int Table::buildTable(string inputfile) {
     return 1;
 }
 int Table::search(string value) {
+    //cout << "function called" << endl;
     int block = indexSearch(value);
+    //cout << "block found" << endl;
     if(block == 0) {
-        cout << "record not found";
+        cout << "record not found" << endl;
         return 0;
     }
     else {
         string buffer;
         int error = readblock(flatfile, block, buffer);
-        cout << buffer;
+        cout << buffer << endl;
         return 1;
     }
 }
 int Table::indexSearch(string value) {
     string buffer;
     int block = getfirstblock(indexfile);
+    //cout << "frist block of index file" << block << endl;
     while(block != 0) {
         string b;
         int error = readblock(indexfile, block, b);
         buffer += b;
         block = nextblock(indexfile, block);
+        //cout << block << " ";
     }
+    //cout << "buffer full" << endl;
     istringstream instream;
     string s;
     int b;
     instream.str(buffer);
     instream >> s >> b;
+    //cout << "I think we make it here" << endl;
     while(s != "88888") {
         if(s == value) {
+            //cout << b << endl;
             return b;
         }
+        //cout << s << " " << value;
         instream >> s >> b;
     }
     return 0;

@@ -10,7 +10,7 @@
 
 using namespace std;
 
-Shell::Shell(string filename, int numberofblocks, int blocksize) : Filesys(filename, numberofblocks, blocksize) {
+Shell::Shell(string diskname, int numberofblocks, int blocksize) : Filesys(diskname, numberofblocks, blocksize) {
 
 }
 int Shell::dir() {
@@ -45,6 +45,11 @@ int Shell::del(string file) {
 int Shell::type(string file) {
     string buffer;
     int block = getfirstblock(file);
+    if (block == -1) 
+    {
+        cout << "Error" << endl;
+        return 0;
+    }
     while(block != 0) {
         string b;
         readblock(file, block, b);
