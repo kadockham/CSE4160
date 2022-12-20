@@ -1,0 +1,2 @@
+# CSE4160
+The purpose of this project was to create an operating system like DOS in c++. The classes implemented are sdisk, filesys, block, shell, and table. The sdisk simulates a the storage of the operating system. The filesys implements a fat and a free list to keep track of all the free blocks on the disk. The block class ensures all information takes the size of a block. The shell class simulates a shell and allows the user to enter commands. Finally the table class simulates a data base that allows users to search for files in the database.
